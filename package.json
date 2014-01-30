@@ -1,0 +1,9 @@
+{
+  "name": "Crystal-FS",
+  "title": "Crystal FS",
+  "id": "jid1-PgiknHgLndPZFQ",
+  "description": "Read and write local files",
+  "author": "Elsa Balderrama",
+  "license": "GPL v3",
+  "version": "0.1"
+}
