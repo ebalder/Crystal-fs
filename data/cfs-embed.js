@@ -1,26 +1,22 @@
 
 var emit = self.port.emit;
 var doc = document.documentElement;
-var path; //working path
+var path = null; //working path
 var actions = {
+	'get-tree': function(data){
+		emit('get-tree', data);
+	},
 	open: function(data){
 		emit('open-file', data.dir);
 		return 0;
 	},
 	'save-file': function(data){
-		emit('save-file', {
-			data: data.data,
-			file: data.file || null,
-			path: path
-		});
+		data.path = path;
+		emit('save-file', data);
 	},
-	getDir: function(data){},
 	'set-path': function(data){
-		emit('prompt-file', {
-			mode: data.mode || 'modeGetFolder',
-			filter: data.filter || 'filterAll' 
-		});
-	}
+		emit('prompt-file', data);
+	},
 };
 
 var cfs = function(action, data){
@@ -34,18 +30,29 @@ var oncfs = new CustomEvent('cfs',{
 	detail: cfs,
 });
 doc.dispatchEvent(oncfs);
+/* Let the user ask for it */
+doc.addEventListener('cfs-ask', function ask(ev){
+	doc.dispatchEvent(oncfs);
+	doc.removeEventListener('cfs-ask', ask);
+	return false;
+});
 
+
+self.port.on('create-on-path', function(data){
+
+});
+
+self.port.on('files', function(data){
+});
+self.port.on('save-on-path', function(data){
+
+});
 self.port.on('set-path', function(data){
 	path = data;
 	var pathSet = new CustomEvent('path-set');
 	doc.dispatchEvent(pathSet);
 });
-self.port.on('save-on-path', function(data){
-
+self.port.on('got-tree', function(data){
+	var gotTree = new CustomEvent('got-tree', {detail: data});
+	doc.dispatchEvent(gotTree);
 });
-self.port.on('create-on-path', function(data){
-
-});
-self.port.on('')
-self.port.on('files', function(data){
-})
