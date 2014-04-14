@@ -6,8 +6,8 @@ var actions = {
 		emit('get-tree', data);
 		return;
 	},
-	open: function(data){
-		emit('open-file', data.dir);
+	'open': function(data){
+		emit('open-file', data);
 		return;
 	},
 	'revoke': function(data){
@@ -21,6 +21,10 @@ var actions = {
 	},
 	'set-path': function(data){
 		emit('set-path', data);
+		return;
+	},
+	'get-paths': function(data){
+		emit('get-paths', data);
 		return;
 	},
 };
@@ -53,12 +57,12 @@ self.port.on('create-on-path', function(data){
 	return;
 });
 self.port.on('file', function(data){
-	var gotTree = new CustomEvent('got-file', {detail: data});
+	var gotFile = new CustomEvent('got-file', {detail: data});
 	doc.dispatchEvent(gotFile);
 	return;
 });
 self.port.on('files', function(data){
-	var gotTree = new CustomEvent('got-files', {detail: data});
+	var gotFiles = new CustomEvent('got-files', {detail: data});
 	doc.dispatchEvent(gotFiles);
 	return;
 });
