@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta CFS = 'true'/>
+</head>
+<body>
+	<script>
+
+console.log('ver == 1');
+
+var cfs;
+document.documentElement.addEventListener('cfs', function(ev){
+	cfs = ev.detail;
+	console.log('ready');
+});
+
+var URI;
+
+function _init(){
+
+	var canvas = document.getElementsByTagName('canvas')[0];
+	var ctx = canvas.getContext('2d');
+	var img = document.getElementsByTagName('img')[0];
+	ctx.drawImage(img, 0, 0, 200, 200);
+	URI = canvas.toDataURL();
+
+	return;
+}
+window.onload = _init;
+
+function getTree (ev) {
+	cfs('get-tree', {}, function(tree){
+		console.log(tree);
+		return;
+	});
+	return;
+}
+
+function saveFile (ev) {
+	cfs('save-file', {
+		data: URI,
+		file: 'asdfasdfasdfasdf',
+		type: 'b64',
+		pathKey: localStorage.pathKey,
+		path: '/'
+	}, function(pathKey){
+		console.log('Setting path key: %s', pathKey);
+		localStorage.pathKey = pathKey;
+	});
+
+	return;
+}
+
+function setPath (ev) {
+	cfs('set-path', {
+		mode: 'modeGetFolder',
+		filterLabel: 'custom'
+	}, function(pathKey){
+		console.log('Setting path key: %s', pathKey);
+		localStorage.pathKey = pathKey;
+	});
+
+	return;
+}
+
+function openFile (ev) {
+	console.log('openingFile...');
+	cfs('open-file', {
+		type:'b64'
+	}).on('success', function(data){
+		var img = new Image();
+		img.onload = function(ev){
+			var container = document.getElementById('image');
+			container.appendChild(img);
+		};
+		img.src = 'data:;base64,'+data;
+	});
+
+	return;
+}
+
+function loadFile (ev) {
+	console.log('openingFile...');
+	cfs('open-file', {
+		type:'b64',
+		pathKey:localStorage.pathKey,
+		path:'test/img.png'
+	}).on('success', function(data){
+		var img = new Image();
+		img.onload = function(ev){
+			var container = document.getElementById('image');
+			container.appendChild(img);
+		};
+		img.src = 'data:;base64,'+data;
+	});
+
+	return;
+}
+
+function getPaths (ev) {
+	console.log('Getting paths...');
+	cfs('get-paths').on('success', function(data){
+		console.log(data);
+	});
+
+	return;
+}
+	 
+	</script>
+	<button onclick="getTree()">getTree</button>
+	<button onclick="saveFile()">saveFile</button>
+	<button onclick="setPath()">setPath</button>
+	<button onclick="openFile()">openFile</button>
+	<button onclick="loadFile()">loadFile</button>
+	<button onclick="getPaths()">getPaths</button>
+	<img src="http://localhost:8000/canvas.png" />
+	<canvas width="200" height="200"></canvas>
+	<div id="image">asdf</div>
+</body>
+</html>
