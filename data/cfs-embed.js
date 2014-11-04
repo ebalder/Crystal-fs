@@ -4,43 +4,44 @@ var doc = document.documentElement;
 var mid = 0; //message id
 
 var cfs = function(action, data, success, error){
-	data = data || {};
-	data.mid = '' + mid;
-	mid++;
+    data = data || {};
+    data.mid = '' + mid;
+    mid++;
 
-	var cfsObject = new CFSObject(action, data);
+    var cfsObject = new CFSObject(action, data);
 
-	cfsObject.success = success || function(){};
-	cfsObject.error = error || function(){};
+    cfsObject.success = success || function(){};
+    cfsObject.error = error || function(){};
 
-	emit(action, data);
+    emit(action, data);
 
-	return cfsObject;
-}	
+    return cfsObject;
+}   
 
-function CFSObject(){
-	var obj = this;
+function CFSObject(action, data){
+    var obj = this;
 
-	self.port.on(data.mid, function(err, data){
-		if(err){
-			obj.error(err)
-		}
-		else{
-			obj.success(data);
-		}
-	});
+    self.port.on(data.mid, function(err, data){
+        if(err){
+            obj.error(err)
+        }
+        else{
+            obj.success(data);
+        }
+    });
 }
 
 CFSObject.prototype.on = function(action, callback){
-	this[action] = callback;
-	return this;
+    this[action] = callback;
+    return this;
 }
 
-if (document.querySelector("head > meta[CFS = 'true']")){
-	var ready = new CustomEvent('cfs',{
-		detail: cfs,
-	});
-	doc.dispatchEvent(ready);
+if (document.querySelector("html[data-cfs='true']") != null){
+    var ready = new CustomEvent('cfs',{
+        detail: cfs,
+    });
+    console.log('lalalala');
+    doc.dispatchEvent(ready);
 }
 
 
