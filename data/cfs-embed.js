@@ -3,7 +3,7 @@ var emit = self.port.emit;
 var doc = document.documentElement;
 var mid = 0; //message id
 
-var cfs = function(action, data, success, error){
+var cfs = function cfs(action, data, success, error){
     data = data || {};
     data.mid = '' + mid;
     mid++;
@@ -37,10 +37,11 @@ CFSObject.prototype.on = function(action, callback){
 }
 
 if (document.querySelector("html[data-cfs='true']") != null){
-    var ready = new CustomEvent('cfs',{
-        detail: cfs,
-    });
-    console.log('lalalala');
+    var ready = new CustomEvent('cfs');
+    /* ToDo: for some reason, passing the detail to the constructor didn't work
+     * a bug? will maybe have to be changed later 
+     */
+    ready.detail = cfs;
     doc.dispatchEvent(ready);
 }
 
