@@ -27,7 +27,7 @@ function _init(){
 window.onload = _init;
 
 function getTree (ev) {
-    cfs('get-tree', {}, function(tree){
+    fsTransaction('get-tree', {}, function(tree){
         console.log(tree);
         return;
     });
@@ -35,7 +35,7 @@ function getTree (ev) {
 }
 
 function saveFile (ev) {
-    cfs('save-file', {
+    fsTransaction('save-file', {
         data: URI,
         file: 'asdfasdfasdfasdf',
         type: 'b64',
@@ -50,7 +50,7 @@ function saveFile (ev) {
 }
 
 function setPath (ev) {
-    cfs('set-path', {
+    fsTransaction('set-path', {
         mode: 'modeGetFolder',
         filterLabel: 'custom'
     }, function(pathKey){
@@ -63,7 +63,7 @@ function setPath (ev) {
 
 function openFile (ev) {
     console.log('openingFile...');
-    cfs('open-file', {
+    fsTransaction('open-file', {
         type:'b64'
     }).on('success', function(data){
         var img = new Image();
@@ -79,7 +79,7 @@ function openFile (ev) {
 
 function loadFile (ev) {
     console.log('openingFile...');
-    cfs('open-file', {
+    fsTransaction('open-file', {
         type:'b64',
         pathKey:localStorage.pathKey,
         path:'test/img.png'
@@ -97,7 +97,7 @@ function loadFile (ev) {
 
 function getPaths (ev) {
     console.log('Getting paths...');
-    cfs('get-paths').on('success', function(data){
+    fsTransaction('get-paths').on('success', function(data){
         console.log(data);
     });
 
