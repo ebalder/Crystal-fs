@@ -8,8 +8,7 @@
 console.log('ver == 1');
 
 var cfs;
-document.documentElement.addEventListener('cfs', function(ev){
-    cfs = ev.detail;
+document.documentElement.addEventListener('cfs-ready', function(ev){
     console.log('cfs ready');
 });
 

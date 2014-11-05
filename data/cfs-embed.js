@@ -37,11 +37,8 @@ CFSObject.prototype.on = function(action, callback){
 }
 
 if (document.querySelector("html[data-cfs='true']") != null){
-    var ready = new CustomEvent('cfs');
-    /* ToDo: for some reason, passing the detail to the constructor didn't work
-     * a bug? will maybe have to be changed later 
-     */
-    ready.detail = cfs;
+    var ready = new CustomEvent('cfs-ready');
+    exportFunction(cfs, unsafeWindow, {defineAs: 'FSTransaction', allowCallbacks: true});
     doc.dispatchEvent(ready);
 }
 
