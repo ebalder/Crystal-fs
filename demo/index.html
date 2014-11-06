@@ -29,16 +29,15 @@ window.onload = _init;
 function getTree (ev) {
     fsTransaction('get-tree', {}, function(tree){
         console.log(tree);
-        return;
     });
     return;
 }
 
 function saveFile (ev) {
     fsTransaction('save-file', {
-        data: URI,
+        data: 'URI',
         file: 'asdfasdfasdfasdf',
-        type: 'b64',
+        type: 'utf8',
         pathKey: localStorage.pathKey,
         path: '/'
     }, function(pathKey){
