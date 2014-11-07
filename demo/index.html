@@ -64,7 +64,7 @@ function openFile (ev) {
     console.log('openingFile...');
     fsTransaction('open-file', {
         type:'b64'
-    }).on('success', function(data){
+    }, function(data){
         var img = new Image();
         img.onload = function(ev){
             var container = document.getElementById('image');
