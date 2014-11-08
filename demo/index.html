@@ -63,7 +63,7 @@ function setPath (ev) {
 function openFile (ev) {
     console.log('openingFile...');
     fsTransaction('open-file', {
-        type:'b64'
+        encoding: null
     }, function(data){
         var img = new Image();
         img.onload = function(ev){
