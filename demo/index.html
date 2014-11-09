@@ -63,10 +63,11 @@ function setPath (ev) {
 function openFile (ev) {
     console.log('openingFile...');
     fsTransaction('open-file', {
-        encoding: null
+        encoding: 'base64'
     }, function(data){
         var img = new Image();
         img.onload = function(ev){
+            console.log('lalala');
             var container = document.getElementById('image');
             container.appendChild(img);
         };
