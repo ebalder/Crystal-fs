@@ -67,7 +67,6 @@ function openFile (ev) {
     }, function(data){
         var img = new Image();
         img.onload = function(ev){
-            console.log('lalala');
             var container = document.getElementById('image');
             container.appendChild(img);
         };
@@ -82,8 +81,8 @@ function loadFile (ev) {
     fsTransaction('open-file', {
         type:'b64',
         pathKey:localStorage.pathKey,
-        path:'test/img.png'
-    }).on('success', function(data){
+        path:['lib','pug.png']
+    }, function(data){
         var img = new Image();
         img.onload = function(ev){
             var container = document.getElementById('image');
