@@ -7,7 +7,6 @@ var cfs = function cfs(action, data, success, error){
     data = data || {};
     data.mid = '' + mid;
     mid++;
-
     var cfsObject = new CFSObject(action, data);
 
     cfsObject.success = success || function(){};

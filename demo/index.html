@@ -79,10 +79,11 @@ function openFile (ev) {
 function loadFile (ev) {
     console.log('openingFile...');
     fsTransaction('open-file', {
-        type:'b64',
+        encoding:'base64',
         pathKey:localStorage.pathKey,
         path:['lib','pug.png']
     }, function(data){
+        console.log(data);
         var img = new Image();
         img.onload = function(ev){
             var container = document.getElementById('image');
