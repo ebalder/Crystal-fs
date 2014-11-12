@@ -35,8 +35,8 @@ function getTree (ev) {
 
 function saveFile (ev) {
     fsTransaction('save-file', {
-        content: 'URI',
-        type: 'utf8',
+        content: URI,
+        encoding: 'base64',
         pathKey: localStorage.pathKey,
         path: ['save']
     }, function(res){
