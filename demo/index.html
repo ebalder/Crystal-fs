@@ -35,14 +35,12 @@ function getTree (ev) {
 
 function saveFile (ev) {
     fsTransaction('save-file', {
-        data: 'URI',
-        file: 'asdfasdfasdfasdf',
+        content: 'URI',
         type: 'utf8',
         pathKey: localStorage.pathKey,
-        path: '/'
-    }, function(pathKey){
-        console.log('Setting path key: %s', pathKey);
-        localStorage.pathKey = pathKey;
+        path: ['save']
+    }, function(res){
+        console.log('Setting path key: %s', res);
     });
 
     return;
@@ -53,7 +51,7 @@ function setPath (ev) {
         mode: 'modeGetFolder',
         filterLabel: 'custom'
     }, function(pathKey){
-        console.log('Setting path key: %s', pathKey);
+        console.log('Setting path key %s: ', pathKey);
         localStorage.pathKey = pathKey;
     });
 
