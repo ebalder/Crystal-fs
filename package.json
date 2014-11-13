@@ -2,7 +2,7 @@
     "name": "crystal-fs",
     "title": "Crystal FS",
     "id": "jid1-PgiknHgLndPZFQ",
-    "description": "Read and write local files",
+    "description": "Read and write local files transparently",
     "author": "Elsa Balderrama",
     "license": "GPL v3",
     "version": "0.1.1"
