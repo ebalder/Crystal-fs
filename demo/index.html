@@ -95,7 +95,7 @@ function loadFile (ev) {
 
 function getPaths (ev) {
     console.log('Getting paths...');
-    fsTransaction('get-paths').on('success', function(data){
+    fsTransaction('get-paths', null, function(data){
         console.log(data);
     });
 

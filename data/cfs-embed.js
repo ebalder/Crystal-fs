@@ -8,7 +8,6 @@ var cfs = function cfs(action, data, success, error){
     data.mid = '' + mid;
     mid++;
     var cfsObject = new CFSObject(action, data);
-
     cfsObject.success = success || function(){};
     cfsObject.error = error || function(){};
 
