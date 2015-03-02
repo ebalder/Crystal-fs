@@ -6,7 +6,7 @@ You can help with the development, improvement and mantainance of more software 
 #About
 This addon is meant to make possible web applications that work simultaneously with multiple local files. It's currently for firefox becase it was the only one with a more or less stable specification for addon-powered filesystem access.
 
-Compatibility with more browsers to come. There is a chance that a [filesystem API specification](http://dev.w3.org/2009/dap/file-system/pub/FileSystem/) gets reconsidered for modern browsers. 
+A library for browsers is to come. There is a chance that a [filesystem API specification](http://dev.w3.org/2009/dap/file-system/pub/FileSystem/) gets reconsidered for modern browsers. 
 
 Google Chrome already has a [working implementation](https://developer.chrome.com/apps/fileSystem) of a Filesystem API which possibly works [also on Opera](https://developer.mozilla.org/en-US/docs/WebGuide/API/File_System#Browser_compatibility). So a very big userbase is already covered on that front and I find it pointless to keep making more versions for more browsers until it's demanded.
 
