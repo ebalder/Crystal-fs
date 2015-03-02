@@ -4,7 +4,7 @@ Addon which lets you perform client-side filesystem transactions from your web a
 You can help with the development, improvement and mantainance of more software by **donating** to my [patreon account](http://patreon.com/lexas). Thanks!.
 
 #About
-This addon is meant to make possible web applications that work simultaneously with multiple local files. It's currently done for firefox becase it was the only one with a more or less stable specification for filesystem access.
+This addon is meant to make possible web applications that work simultaneously with multiple local files. It's currently for firefox becase it was the only one with a more or less stable specification for addon-powered filesystem access.
 
 Compatibility with more browsers to come. There is a chance that a [filesystem API specification](http://dev.w3.org/2009/dap/file-system/pub/FileSystem/) gets reconsidered for modern browsers. 
 
