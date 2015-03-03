@@ -133,7 +133,7 @@ fsTransaction('get-paths', null, function(data){
 When you call a prompt action, you can pass a string of semicolon-separated wildcard-like file extention matches: `[*.txt;*.png]`.
 
 Or you can use predefined (String) filters by file type: 
-*allFilter = '
+- allFilter = '
 - htmlFilter = '*.html; *.htm; *.shtml; *.xhtml'
 - textFilter = '*.txt; *.text'
 - imageFilter = '*.jpe; *.jpg; *.jpeg; *.gif; *.png; *.bmp; *.ico; *.svg; *.svgz; *.tif; *.tiff; *.ai; *.drw; *.pct; *.psp; *.xcf; *.psd; *.raw'
