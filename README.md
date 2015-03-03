@@ -45,8 +45,8 @@ The resulting object has the following structure:
 ```
 {
 	'a_folder': {
-		'a-file.txt',
-		'an-image.png',
+		'a-file.txt': '',
+		'an-image.png': '',
 		'another_folder': {
 			...
 		}
