@@ -118,12 +118,12 @@ fsTransaction('get-paths', null, function(data){
 ```
 
 ##valid encoding types are:
--utf-8
--utf-16
--utf-32
--ascii
--base64
--uint8 (binary)
+- utf-8
+- utf-16
+- utf-32
+- ascii
+- base64
+- uint8 (binary)
 
 ##valid prompt modes are:
 - modeGetFolder
